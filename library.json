@@ -21,12 +21,12 @@
     "type": "git",
     "url": "https://github.com/khoih-prog/AsyncWebServer_ESP32_W5500"
   },
-  "dependencies": 
+  "dependencies":
   [
     {
-      "owner": "me-no-dev",
+      "owner": "mathieucarbou",
       "name": "AsyncTCP",
-      "version": "^1.1.1",
+      "version": "^3.2.4",
       "platforms": "espressif32"
     }
   ],

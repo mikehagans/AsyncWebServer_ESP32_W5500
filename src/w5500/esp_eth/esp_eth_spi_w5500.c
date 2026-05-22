@@ -68,7 +68,10 @@ esp_eth_mac_t* w5500_begin(int MISO_GPIO, int MOSI_GPIO, int SCLK_GPIO, int CS_G
     .quadhd_io_num = -1,
   };
 
-  if ( ESP_OK != spi_bus_initialize( SPIHOST, &buscfg, 1 ))
+  // ESP32-S3 FIX: Use SPI_DMA_CH_AUTO instead of hardcoded channel 1.
+  // ESP32-S3 only supports auto-allocated DMA channels; specifying a fixed
+  // channel causes "invalid dma channel" errors and spinlock asserts.
+  if ( ESP_OK != spi_bus_initialize( SPIHOST, &buscfg, SPI_DMA_CH_AUTO ))
   {
     ESP_LOGE(TAG, "%s(%d): Error spi_bus_initialize", __FUNCTION__, __LINE__);
 
